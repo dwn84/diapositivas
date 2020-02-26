@@ -1,0 +1,338 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Herencia en C#</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/moon.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section data-transition="zoom">
+					<h3>Herencia en C#</h3>
+				</section>
+
+				<section data-transition="convex-in concave-out">
+					<h3> es uno de los pilares de la programación orientada a objetos que permite</h3>
+					<ul>
+						<li class="fragment" data-fragment-index="1">Definición de una clase a partir de la definición de otra ya existente.</li>
+						<li class="fragment" data-fragment-index="2">Compartir automáticamente métodos y variables entre clases</li>
+					</ul>
+
+				</section>
+
+				<section data-transition="convex-in concave-out">
+					<h3>Ejemplo: escenario futbolístico</h3>
+					<img src="assets/clases1.jpg" alt="">
+				</section>
+
+				<section data-transition="convex">
+					<h2>Código de ejemplo para cada clase</h2>
+					<section data-transition="zoom">
+						<pre><code class="hljs" data-trim>
+							public class Futbolista
+							{
+	
+								private int id;
+								private String Nombre;
+								private String Apellidos;
+								private int Edad;
+								private int dorsal;
+								private String demarcacion;
+	
+								public void Concentrarse() 
+								{
+									//...
+								}
+	
+								public void Viajar() 
+								{
+									//...
+								}
+	
+								public void jugarPartido() 
+								{
+									//...
+								}
+	
+								public void entrenar() 
+								{
+									//...
+								}
+							}
+						</code></pre>
+					</section>
+					
+					<section data-transition="zoom">
+						<pre><code class="hljs" data-trim>
+							public class Entrenador
+							{
+
+								private int id;
+								private String Nombre;
+								private String Apellidos;
+								private int Edad;
+								private String idFederacion;
+
+								public void Concentrarse() 
+								{
+									//...
+								}
+
+								public void Viajar() 
+								{
+									//...
+								}
+
+								public void dirigirPartido() 
+								{
+									//...	
+								}
+
+								public void dirigirEntreno() 
+								{
+									//...
+								}
+							}
+						</code></pre>
+					</section>
+
+					<section data-transition="zoom">
+						<pre><code class="hljs" data-trim>
+							public class Medico
+							{
+
+								private int id;
+								private String Nombre;
+								private String Apellidos;
+								private int Edad;
+								private String Titulacion;
+								private int aniosExperiencia;
+
+								public void Concentrarse() 
+								{
+									//...
+								}
+
+								public void Viajar() 
+								{
+									//...
+								}
+
+								public void darDiagnostico() 
+								{
+									//...
+								}
+							}
+						</code></pre>
+					</section>
+
+
+				</section>
+
+				<section data-transition="convex">
+
+					<section data-transition="convex">
+						<h3>...para no escribir código de más</h3>
+						<ul>
+							<li class="fragment" data-fragment-index="1">Creamos una clase con el "código que es común a las tres clases"</li>
+							<li class="fragment" data-fragment-index="2">La cual será llamada Clase, <b style="color:white"><i>Padre</b></i>, <b style="color:white">Base</b> o <b style="color:white">Super Clase</b></li>
+						</ul>
+
+					</section>					
+
+					<section data-transition="zoom">
+						<h3>...Clases hijas</h3>
+						<ul>
+							<li class="fragment" data-fragment-index="1">Heredan de la clase padre todos los atributos y métodos públicos (+) o protegidos (#)</li>
+							<li class="fragment" data-fragment-index="2">Además implementan atributos y métodos propios</li>
+						</ul>
+					</section>
+				</section>
+
+				<section data-transition="convex">
+					<h2>Clase Base o Padre</h2>
+					<pre><code class="hljs" data-trim>
+						class SeleccionFutbol
+						{
+							protected int id;
+							protected String Nombre;
+							protected String Apellidos;
+							protected int Edad;
+
+							public SeleccionFutbol() 
+							{
+							}
+
+							public SeleccionFutbol(int id, String nombre, String apellidos, int edad) 
+							{
+								this.id = id;
+								this.Nombre = nombre;
+								this.Apellidos = apellidos;
+								this.Edad = edad;
+							}
+
+							public void Concentrarse() 
+							{
+								//...
+							}
+
+							public void Viajar() 
+							{
+								//...
+							}
+						}
+					</code></pre>
+					</section>
+
+					<section data-transition="convex-in concave-out">
+						<h3>Modelo de la herencia</h3>
+						<img src="assets/clases2.jpg" alt="" height="500px">
+					</section>
+
+					<section data-transition="convex">
+						<h2>Cambio en el código para cada clase</h2>
+						<section data-transition="zoom">
+							<pre><code class="hljs" data-trim>
+								class Futbolista:SeleccionFutbol
+								{
+									private int dorsal;
+									private String demarcacion;
+
+									public Futbolista():base() 
+									{																			
+									}
+									
+									public Futbolista(int id, String nombre, String apellidos, int edad, int dorsal, String demarcacion)
+									:base(id, nombre, apellidos, edad) {
+										
+										this.dorsal = dorsal;
+										this.demarcacion = demarcacion;
+									}
+
+									// getter y setter
+
+									public void jugarPartido() 
+									{
+										//...
+									}
+
+									public void entrenar() 
+									{
+										//...
+									}
+								}
+							</code></pre>
+						</section>
+						
+						<section data-transition="zoom">
+							<pre><code class="hljs" data-trim>
+								class Entrenador:SeleccionFutbol
+								{
+									private String idFederacion;
+
+									public Entrenador():base() 
+									{
+									}
+									
+									public Entrenador(int id, String nombre, String apellidos, int edad, String idFederacion)
+									:base(id, nombre, apellidos, edad) 
+									{
+										this.idFederacion = idFederacion;
+									}
+
+									// getter y setter
+
+									public void dirigirPartido() 
+									{
+										//...	
+									}
+
+									public void dirigirEntreno() 
+									{
+										//...
+									}
+								}
+							</code></pre>
+						</section>
+	
+						<section data-transition="zoom">
+							<pre><code class="hljs" data-trim>
+								class Medico: SeleccionFutbol
+								{
+								
+									private String Titulacion;
+									private int aniosExperiencia;
+								
+									public Medico():base() 
+									{											
+									}
+									
+									public Medico(int id, String nombre, String apellidos, int edad, int aniosExperiencia, String Titulacion)
+									:base(id, nombre, apellidos, edad) 
+									{
+										this.aniosExperiencia = aniosExperiencia;
+										this.Titulacion = Titulacion;
+
+									}
+								
+									// getter y setter
+								
+									public void darDiagnostico() 
+									{
+										//...
+									}
+								}
+							</code></pre>
+						</section>	
+					</section>
+
+					<section data-transition="convex">
+						<h2>Creando objetos</h2>
+						<section data-transition="zoom">
+							<pre><code class="hljs" data-trim>
+								Futbolista arq = new Futbolista(1, "Rene", "Higuita", 53,1, "Arquero");
+								Entrenador dt = new Entrenador(2, "Carlos", "Queiroz", 66, "FCF58963");
+								Medico med = new Medico(3, "Gustavo", "Pineda", 56, 4, "Médico");
+							</code></pre>
+						</section>
+
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				hash: true,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/highlight/highlight.js' },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
