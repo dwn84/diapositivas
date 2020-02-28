@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Herencia en C#</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/moon.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section data-transition="zoom">
+					<h3>Definición de clases en C#</h3>
+				</section>
+
+				<section data-transition="convex-in concave-out">
+                    <h3>Clase</h3>
+                    <section data-transition="zoom">
+                        <ul>
+                            <li class="fragment" data-fragment-index="1">Una clase es un molde del que luego se pueden crear múltiples objetos, con similares características.</li>
+                            <li class="fragment" data-fragment-index="2">Una clase es una plantilla (molde), que define atributos (variables) y métodos (funciones)</li>
+                            <li class="fragment" data-fragment-index="3">La clase define los atributos y métodos comunes a los objetos de ese tipo, pero luego, cada objeto tendrá sus propios valores y compartirán las mismas funciones.</li>
+                        </ul>
+                    </section>                    
+                    <section data-transition="zoom">
+                        <ul>
+                            <li class="fragment" data-fragment-index="1">Debemos crear una clase antes de poder crear objetos  <b style="color:white"><i>(instancias)</b></i> de esa clase.</li>
+                            <li class="fragment" data-fragment-index="2">Al crear un objeto de una clase, se dice que se crea una instancia de la clase o un objeto propiamente dicho.</li>
+                        </ul>
+                    </section>    
+                </section>
+                
+                <section data-transition="convex-in concave-out">
+                    <h3>Atributos de una clase</h3>
+                    <section data-transition="zoom">
+                        <ul>
+                            <li class="fragment" data-fragment-index="1">Son las características, cualidades, propiedades distintivas de cada clase. Contienen información sobre el objeto.</li>
+                            <li class="fragment" data-fragment-index="2">Determinan la apariencia, estado y demás particularidades de la clase. Varios objetos de una misma clase tendrán los mismos atributos pero con valores diferentes.</li>
+                        </ul>
+                    </section>                    
+                    <section data-transition="zoom">
+                        <ul>
+                            <li class="fragment" data-fragment-index="1">Cuando creamos un objeto de una clase determinada, los atributos declarados por la clase son localizadas en memoria y pueden ser modificados mediante los métodos.</li>                        
+                        </ul>
+                    </section>                 
+                </section>
+                
+                <section data-transition="convex-in concave-out">
+                    <h3>Métodos de una clase</h3>
+                    <section data-transition="zoom">
+                        <ul>
+                            <li class="fragment" data-fragment-index="1">Los métodos son como las funciones en los lenguajes estructurados, pero están definidos dentro de una clase y operan sobre los atributos o variables de dicha clase.</li>
+                            <li class="fragment" data-fragment-index="2">Los métodos también son llamados las responsabilidades de la clase. Para encontrar las responsabilidades de una clase hay que preguntarse qué puede hacer la clase.</li>                            
+                        </ul>
+                    </section>  
+                    <section data-transition="zoom">
+                        <ul>
+                            <li class="fragment" data-fragment-index="1">El objetivo de un método es ejecutar las actividades que tiene encomendada la clase a la cual pertenece.</li>                        
+                            <li class="fragment" data-fragment-index="2">Usualmente los atributos de un objeto se modifican mediante llamadas a sus métodos.</li>                        
+                        </ul>
+                    </section>                   
+				</section>
+
+				<section data-transition="convex-in concave-out">
+					<h3>Crear una nueva clase...</h3>
+					<img src="https://raw.githubusercontent.com/dwn84/diapositivas/master/assets/poo1.jpg" alt="">
+                </section>
+                
+                <section data-transition="convex-in concave-out">
+					<h3>Estructura de una clase</h3>					
+						<pre><code class="hljs" data-trim>
+class claseX
+{                                
+    #region variables
+    #endregion
+    
+    #region propiedades
+    #endregion
+    
+    #region metodos
+    #endregion
+}
+						</code></pre>
+                </section>
+                
+                <section data-transition="convex-in concave-out">
+                    <h3> Modificadores de acceso</h3>
+                    <section data-transition="zoom">
+                        <p>
+                            Todos los tipos y miembros de tipo tienen un nivel de accesibilidad que controla si se pueden usar desde otro código del ensamblado u otros ensamblados.
+                        </p>
+                    </section>
+                    <section data-transition="zoom">
+                        <p>
+                            Puede usar los siguientes modificadores de acceso para especificar la accesibilidad de un tipo o miembro cuando lo declare:
+                            <ol>
+                                <li>public</li>
+                                <li>private</li>
+                                <li>protected</li>
+                            </ol>
+                        </p>
+                        <hr>
+                        <a href="https://docs.microsoft.com/es-es/dotnet/csharp/programming-guide/classes-and-structs/access-modifiers">access-modifiers</a>
+
+                    </section>
+                </section>
+                
+                <section data-transition="convex-in concave-out">
+                    <h3> Caso práctico</h3>
+                    <h4> Cuenta bancaria</h4>
+					<ul>
+						<li class="fragment" data-fragment-index="1">Crear una clase llamada “BankAccount” y definir en ella los siguientes métodos:
+                            <ol>
+                                <li>Deposito</li>
+                                <li>Retiro</li>
+                            </ol> 
+                        </li>
+						<li class="fragment" data-fragment-index="2">Toda cuenta requiere: 
+                            <ol>
+                                <li>número de cuenta</li>
+                                <li>nombre titular</li>
+                                <li>saldo</li>                                
+                            </ol>
+                        </li>
+					</ul>
+
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				hash: true,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/highlight/highlight.js' },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
