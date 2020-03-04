@@ -1,69 +1,84 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-		<title>Polimorfismo en C#</title>
+    <title>Polimorfismo en C#</title>
 
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/moon.css">
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/reveal.css" />
+    <link rel="stylesheet" href="css/theme/moon.css" />
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/monokai.css">
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/monokai.css" />
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match(/print-pdf/gi)
+        ? 'css/print/pdf.css'
+        : 'css/print/paper.css';
+      document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-transition="zoom">
+          <h3>Polimorfismo en C#</h3>
+        </section>
 
-				<section data-transition="zoom">
-					<h3>Polimorfismo en C#</h3>
-				</section>
+        <section data-transition="convex-in concave-out">
+          <h3>Una clase abstracta...</h3>
+          <ul>
+            <li class="fragment" data-fragment-index="1">
+              Es una clase que no se puede instanciar. Se usa únicamente para
+              definir subclases.
+            </li>
+            <li class="fragment" data-fragment-index="2">
+              Dicho de otra forma: son aquellas clases base (superclases) de las
+              que no se permite la creación de objetos.
+            </li>
+            <li class="fragment" data-fragment-index="3">
+              Para ello, se utiliza la palabra clave abstract.
+            </li>
+          </ul>
+        </section>
 
-				<section data-transition="convex-in concave-out">
-					<h3> Una clase abstracta...</h3>
-					<ul>
-						<li class="fragment" data-fragment-index="1">Es una clase que no se puede instanciar. Se usa únicamente para definir subclases.</li>
-						<li class="fragment" data-fragment-index="2">Dicho de otra forma: son aquellas clases base (superclases) de las que no se permite la creación de objetos.</li>
-						<li class="fragment" data-fragment-index="3">Para ello, se utiliza la palabra clave abstract.</li>
-					</ul>
+        <section data-transition="convex-in concave-out">
+          <h3>Métodos abstractos</h3>
+          <p>
+            Se caracterizan por el hecho de que no pueden ser implementados en
+            la clase base. De ellos, solo se escribe su signatura en la
+            superclase, y su funcionalidad –polimórfica– tiene que indicarse en
+            las clases derivadas (subclases).
+          </p>
+        </section>
+        <section data-transition="convex-in concave-out">
+          <h3>¿Cuándo se utilizan clases abstractas?</h3>
+          <p class="fragment" data-fragment-index="1">
+            Cuando deseamos definir una abstracción que englobe objetos de
+            distintos tipos y queremos hacer uso del polimorfismo
+          </p>
+        </section>
 
-				</section>
+        <section data-transition="convex-in concave-out">
+          <h3>Ejemplo</h3>
+          <img
+            src="https://raw.githubusercontent.com/dwn84/diapositivas/master/assets/poli1.jpg"
+            alt=""
+          />
+        </section>
 
-				<section data-transition="convex-in concave-out">
-					<h3> Métodos abstractos</h3>
-					<p>
-						Se caracterizan por el hecho de que no pueden ser implementados en la clase base. De ellos, solo se escribe su signatura en la superclase, y su funcionalidad –polimórfica– tiene que indicarse en las clases derivadas (subclases).
-					</p>
-
-				</section>
-				<section data-transition="convex-in concave-out">
-					<h3> ¿Cuándo se utilizan clases abstractas?</h3>
-					<p class="fragment" data-fragment-index="1">
-						Cuando deseamos definir una abstracción que englobe objetos de distintos tipos y queremos hacer uso del polimorfismo
-					</p>
-
-				</section>
-
-				<section data-transition="convex-in concave-out">
-					<h3>Ejemplo</h3>
-					<img src="https://raw.githubusercontent.com/dwn84/diapositivas/master/assets/poli1.jpg" alt="">
-				</section>
-
-				<section data-transition="convex">
-					<h2>Código de ejemplo para clase figura</h2>
-						<pre><code class="hljs" data-trim>
+        <section data-transition="convex">
+          <h2>Código de ejemplo para clase figura</h2>
+          <pre><code class="hljs" data-trim>
 abstract class Figura
 {
 
@@ -81,12 +96,12 @@ abstract class Figura
 }
 
 						</code></pre>
-					</section>
+        </section>
 
-						<section data-transition="convex">
-							<h2>Código de ejemplo para clase cuadrado</h2>
+        <section data-transition="convex">
+          <h2>Código de ejemplo para clase cuadrado</h2>
 
-							<pre><code class="hljs" data-trim>
+          <pre><code class="hljs" data-trim>
 class Cuadrado : Figura
 {
 	private double lado;
@@ -103,21 +118,26 @@ class Cuadrado : Figura
 }
 
 						</code></pre>
-					</section>
+        </section>
 
+        <section data-transition="convex-in concave-out">
+          <h3>Interfaces</h3>
+          <ul>
+            <li class="fragment" data-fragment-index="1">
+              Una interfaz es una clase completamente abstracta (una clase sin
+              implementación)
+            </li>
+            <li class="fragment" data-fragment-index="2">
+              Considerando el caso anterior, si no estuviésemos interesados en
+              conocer el color de una Figura, podríamos eliminar por completo su
+              implementación y convertir Figura en una interfaz.
+            </li>
+          </ul>
+        </section>
 
-					<section data-transition="convex-in concave-out">
-						<h3> Interfaces</h3>
-						<ul>
-							<li class="fragment" data-fragment-index="1">Una interfaz es una clase completamente abstracta (una clase sin implementación)</li>
-							<li class="fragment" data-fragment-index="2">Considerando el caso anterior, si no estuviésemos interesados en conocer el color de una Figura, podríamos eliminar por completo su implementación y convertir Figura en una interfaz.</li>
-						</ul>
-	
-					</section>
-
-				<section data-transition="convex">
-					<h2>Código de la interfaz</h2>
-					<pre><code class="hljs" data-trim>
+        <section data-transition="convex">
+          <h2>Código de la interfaz</h2>
+          <pre><code class="hljs" data-trim>
 						interface Figura
 						{										 
 							double CalcularArea();					
@@ -125,61 +145,101 @@ class Cuadrado : Figura
 						}
 					
 					</code></pre>
-				</section>
+        </section>
 
-				<section data-transition="convex">
-					<h3>Interfaces</h3>
-					<section data-transition="convex">				
-						<p>
-							…es una especie de plantilla para la construcción de clases. Normalmente una interfaz se compone de un conjunto de declaraciones de cabeceras de métodos (sin implementar, de forma similar a un método abstracto) que especifican un protocolo de comportamiento para una o varias clases.
-						</p>
+        <section data-transition="convex">
+          <h3>Interfaces</h3>
+          <section data-transition="convex">
+            <p>
+              …es una especie de plantilla para la construcción de clases.
+              Normalmente una interfaz se compone de un conjunto de
+              declaraciones de cabeceras de métodos (sin implementar, de forma
+              similar a un método abstracto) que especifican un protocolo de
+              comportamiento para una o varias clases.
+            </p>
+          </section>
 
-					</section>					
+          <section data-transition="zoom">
+            <p>
+              …una clase puede implementar una o varias interfaces: en ese caso,
+              la clase debe proporcionar la declaración y definición de todos
+              los métodos de cada una de las interfaces.
+            </p>
+          </section>
 
-					<section data-transition="zoom">
-						<p>
-							…una clase puede implementar una o varias interfaces: en ese caso, la clase debe proporcionar la declaración y definición de todos los métodos de cada una de las interfaces.
-						</p>
-					</section>
+          <section data-transition="convex-in concave-out">
+            <ul>
+              <li class="fragment" data-fragment-index="1">
+                En la declaración de una interfaz, lo único que puede aparecer
+                son declaraciones de métodos (su nombre y signatura, sin su
+                implementación)
+              </li>
+              <li class="fragment" data-fragment-index="2">
+                Una interfaz no encapsula datos, sólo define cuáles son los
+                métodos que han de implementar los objetos de aquellas clases
+                que implementen la interfaz.
+              </li>
+            </ul>
+          </section>
 
-					<section data-transition="convex-in concave-out">
-						<ul>
-							<li class="fragment" data-fragment-index="1">En la declaración de una interfaz, lo único que puede aparecer son declaraciones de métodos (su nombre y signatura, sin su implementación)</li>
-							<li class="fragment" data-fragment-index="2">Una interfaz no encapsula datos, sólo define cuáles son los métodos que han de implementar los objetos de aquellas clases que implementen la interfaz.</li>
-						</ul>
-	
-					</section>
+          <section data-transition="zoom">
+            <p>
+              ...son una forma de especificar qué debe hacer una clase sin
+              especificar el cómo.
+            </p>
+          </section>
+        </section>
 
-					<section data-transition="zoom">
-						<p>
-							...son una forma de especificar qué debe hacer una clase sin especificar el cómo.
-						</p>
-					</section>
-				</section>
+        <section data-transition="convex-in concave-out">
+          <h3>Ejemplo</h3>
+          <img
+            src="https://raw.githubusercontent.com/dwn84/diapositivas/master/assets/poli2.jpg"
+            alt=""
+          />
+        </section>
 
-				<section data-transition="convex-in concave-out">
-					<h3>Ejemplo</h3>
-					<img src="https://raw.githubusercontent.com/dwn84/diapositivas/master/assets/poli2.jpg" alt="">
-				</section>
+        <section data-transition="convex">
+          <h2>Código de ejemplo implementación de múltiples interfaces</h2>
+          <pre><code class="hljs" data-trim>
+class Cuadrado : Ifigura, IDibujable, IRotable
+    {
+        public double CalcularArea()
+        {
+            //... proceso para calcular area
+            return 0.0;
+        }
 
-			</div>
-		</div>
+        public void dibujar()
+        {
+            //... proceso para dibujar
+        }
 
-		<script src="js/reveal.js"></script>
+        public void rotar(int grados)
+        {
+            //... proceso para rotar
+        }
+    }
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				hash: true,
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/highlight/highlight.js' },
-					{ src: 'plugin/notes/notes.js', async: true }
-				]
-			});
-		</script>
-	</body>
+						</code></pre>
+        </section>
+      </div>
+    </div>
+
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        hash: true,
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/highlight/highlight.js' },
+          { src: 'plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+  </body>
 </html>
