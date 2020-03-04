@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Herencia en C#</title>
+		<title>Programación orientada a objetos en C#</title>
 
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/reveal.css">
@@ -48,7 +48,7 @@
                 </section>
                 
                 <section data-transition="convex-in concave-out">
-                    <h3>Atributos de una clase</h3>
+                    <h3>Propiedades o Atributos de una clase</h3>
                     <section data-transition="zoom">
                         <ul>
                             <li class="fragment" data-fragment-index="1">Son las características, cualidades, propiedades distintivas de cada clase. Contienen información sobre el objeto.</li>
@@ -75,8 +75,28 @@
                             <li class="fragment" data-fragment-index="1">El objetivo de un método es ejecutar las actividades que tiene encomendada la clase a la cual pertenece.</li>                        
                             <li class="fragment" data-fragment-index="2">Usualmente los atributos de un objeto se modifican mediante llamadas a sus métodos.</li>                        
                         </ul>
-                    </section>                   
-				</section>
+                    </section>    
+                    <section data-transition="zoom">
+                        <ul>
+                            <li class="fragment" data-fragment-index="1">Los métodos se declaran en una clase o struct especificando el nivel de acceso, como public o private, modificadores opcionales como abstract o sealed, el valor de retorno, el nombre del método y cualquier parámetro de método.</li>                        
+                            <li class="fragment" data-fragment-index="2">Todas estas partes forman la firma del método.</li>                        
+                        </ul>
+                    </section>      
+                    
+                    <section data-transition="zoom">
+                        <p>
+                            La definición del método especifica los nombres y tipos de todos los parámetros necesarios. Si el código de llamada llama al métodos, proporciona valores concretos denominados argumentos para cada parámetro. Los argumentos deben ser compatibles con el tipo de parámetro, pero el nombre del argumento (si existe) utilizado en el código de llamada no tiene que ser el mismo que el parámetro con nombre definido en el método.
+                        </p>  
+                    </section>
+
+                    <section data-transition="zoom">
+                        <p>
+                            Los métodos pueden devolver un valor al autor de llamada. Si el tipo de valor devuelto, el tipo enumerado antes del nombre de método, no es void, el método puede devolver el valor mediante la utilización de la palabra clave return . Una instrucción con la palabra clave return seguida de un valor que coincide con el tipo de valor devuelto devolverá este valor al autor de llamada del método.
+                        </p>  
+                    </section>
+                </section>
+                
+
 
 				<section data-transition="convex-in concave-out">
 					<h3>Crear una nueva clase...</h3>
@@ -99,7 +119,7 @@ class claseX
 }
 						</code></pre>
                 </section>
-                
+
                 <section data-transition="convex-in concave-out">
                     <h3> Modificadores de acceso</h3>
                     <section data-transition="zoom">
@@ -121,6 +141,102 @@ class claseX
 
                     </section>
                 </section>
+
+                <section data-transition="convex-in concave-out">
+					<h3>Definición de propiedades</h3>					
+						<pre><code class="hljs" data-trim>
+class ClassX
+{
+
+    private int x;
+
+    //definición de la propiedad asociada a la variable x
+    public int ObtenerX
+    {
+        //lectura de la variable
+        get
+        {
+            return x;
+        }
+        //escritura de la varible
+        set
+        {
+            x = value;
+        }
+
+    }
+}
+						</code></pre>
+                </section>
+
+                <section data-transition="convex-in concave-out">
+					<h3>Definición de métodos</h3>					
+						<pre><code class="hljs" data-trim data-line-numbers="21,28,33,37">
+class ClassX
+{
+
+    private int x;
+    private bool validacion;
+
+    //definición de la propiedad asociada a la variable x
+    public int ObtenerX
+    {
+        //lectura de la variable
+        get
+        {
+            return x;
+        }
+        //escritura de la varible
+        set
+        {
+            x = value;
+        }
+    }
+    public void Validar()
+    {
+        if (x % 2 == 0)
+            validacion = true;
+        else
+            validacion = false;
+    }
+    public void Procesar(int v)
+    {
+        x += v;
+    }
+
+    public int Calcular(int v)
+    {
+        int total;
+        total = x + v;
+        return total;
+    }
+}
+						</code></pre>
+                </section>
+                
+                <section data-transition="convex-in concave-out">
+                    <h3>Instanciación</h3>
+                    <pre><code class="hljs" data-trim>
+                        claseX identidadObjeto = new claseX();
+
+                                                </code></pre>
+                                        </section>
+                </section>
+
+                <section data-transition="convex-in concave-out">
+                    <h3>Llamado de propiedades y métodos</h3>
+                    <pre><code class="hljs" data-trim>
+ClassX alpha = new ClassX();
+Console.WriteLine(alpha.ObtenerX);
+alpha.Procesar(55);
+alpha.Validar();
+Console.WriteLine(alpha.Calcular(66));    
+                    </code></pre>
+                                        </section>
+                </section>
+
+
+
                 
                 <section data-transition="convex-in concave-out">
                     <h3> Caso práctico</h3>
